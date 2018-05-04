@@ -167,32 +167,41 @@ if(!empty($currentUser) && $logged == 'yes') {
   switch ($text) {
       case '/start':
           keyboard($chatId, "Xin chào $firstName $lastName" , $initKeyboard, "physical");
+          
+          
         break;
       case $nutDanhSach:
         if(!empty($userInline)) {
           keyboard($chatId, "Danh sách plan bạn đang tham gia", $userInline, 'inline');
           keyboard($chatId, "Mọi thắc mắc xin liên hệ team" , $initKeyboard, "physical");
+          
         } else {
           sendMessage($chatId, "Bạn chưa tham gia plan nào");
+          
         }
         break;
       case $nutYeuCauTuan:
         if(!empty($keyboardRequest)) {
           keyboard($chatId, "Chọn Plan bạn muốn rút Coin", $keyboardRequest, 'inline');
           keyboard($chatId, "Mọi thắc mắc xin liên hệ team" , $initKeyboard, "physical");
+          
         } else {
           sendMessage($chatId, "Bạn chưa tham gia plan nào");
+          
         }
         break;
       case $nutYeuCauThang:
         if(!empty($keyboardRequest)) {
           keyboard($chatId, "Chọn Plan bạn muốn rút Coin \n(rút lãi hoặc gốc theo tháng)", $keyboardRequestMonth, 'inline');
           keyboard($chatId, "Mọi thắc mắc xin liên hệ team" , $initKeyboard, "physical");
+          
         } else {
           sendMessage($chatId, "Bạn chưa tham gia plan nào");
+          
         }
         break;
       default:
+        keyboard($chatId, "Mọi thắc mắc xin liên hệ team" , $initKeyboard, "physical");
         break;
     }
 } else {

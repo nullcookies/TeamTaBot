@@ -97,7 +97,7 @@ function getDataUser($tenPlan, $tenSheet) {
     $result = $service->spreadsheets_values->get($spreadsheet_id, $spreadsheet_range);
     $arrayData = $result->getValues(); // Mang du lieu
 
-  return $arrayData;
+  	return $arrayData;
 }
 
 /**
@@ -166,11 +166,12 @@ function getResultPlan($tenPlan, $userId) {
   $userPlanDetail   = getDataUser($tenPlan, '1m_zf3zUJa4iHemxzDSHPJ9KHhN0868ShNoeqc7tQ-kQ');
   foreach($userPlanDetail as $k => $v) {
     if(in_array($userId, $v)) {
+      @$donVi 	  =	strtoupper($userPlanDetail['3']['4']);
       $tenDK      = $userPlanDetail[$k][2];
       $soCoinDao  = $userPlanDetail[$k][3];
       $coPhan     = $userPlanDetail[$k][5];
       $laituan    = end($userPlanDetail[$k]);
-      $result         = "Thông tin plan ".(strtoupper($tenPlan))." của bạn:\nTên Đăng Ký: ".ucwords($tenDK)."\nSố Coin Đào PoS: ".$soCoinDao."\nCổ Phần: ".$coPhan."\nLãi Tuần: ".$laituan;
+      $result         = "Thông tin plan ".(strtoupper($tenPlan))." của bạn:\nTên Đăng Ký: ".ucwords($tenDK)."\nSố Coin Đào PoS: ".$soCoinDao. " ". $donVi ."\nCổ Phần: ".$coPhan."\nLãi Tuần: ".$laituan;
     }
   }
   return $result;
